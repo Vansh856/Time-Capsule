@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Capsule Logger 🎯</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #fdfbfb, #ebedee);
+      color: #333;
+    }
+
+    header, footer {
+      background: linear-gradient(135deg, #4a90e2, #9013fe);
+      color: #fff;
+      text-align: center;
+      padding: 1.2rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    footer {
+      font-size: 0.9rem;
+    }
+
+    main {
+      padding: 1.5rem;
+    }
+
+    section {
+      margin-bottom: 2rem;
+      background: #fff;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #4a90e2;
+      border-bottom: 2px solid #9013fe;
+      padding-bottom: 0.3rem;
+    }
+
+    form input, form select, form textarea, form button {
+      display: block;
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.6rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    form input:focus, form select:focus, form textarea:focus {
+      border-color: #4a90e2;
+      outline: none;
+      box-shadow: 0 0 5px rgba(74,144,226,0.5);
+    }
+
+    form button {
+      background: linear-gradient(135deg, #4a90e2, #9013fe);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    form button:hover {
+      background: linear-gradient(135deg, #9013fe, #4a90e2);
+      transform: scale(1.03);
+    }
+
+    #search-controls {
+      margin-bottom: 1rem;
+    }
+
+    #search-controls input {
+      width: auto;
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+
+    #search-controls button {
+      display: inline-block;
+      width: auto;
+      margin-right: 0.5rem;
+      background: #f39c12;
+      border: none;
+      color: #fff;
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #search-controls button:hover {
+      background: #d35400;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    table th, table td {
+      border: 1px solid #ccc;
+      padding: 0.6rem;
+      text-align: left;
+    }
+
+    table th {
+      background: #4a90e2;
+      color: #fff;
+    }
+
+    table tr:nth-child(even) {
+      background: #f2f2f2;
+    }
+
+    table tr:hover {
+      background: #e6f7ff;
+    }
+
+    #log-status-message {
+      color: #27ae60;
+      font-weight: bold;
+    }
+
+    #log-count-message {
+      color: #9013fe;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Time Capsule Logger 🎯</h1>
+    <p>A digital journal for recording memories and goals.</p>
+  </header>
+
+  <main>
+    <!-- User Management Section -->
+    <section id="user-management">
+      <h2>User Management</h2>
+      <div id="current-user-info">
+        <p>Current User: <span id="display-user-name">None</span></p>
+      </div>
+      <form id="create-user-form">
+        <input type="text" id="user-name" placeholder="Enter your Name" required>
+        <input type="text" id="user-id" placeholder="Enter your User ID" required>
+        <button type="submit">Create/Select User</button>
+      </form>
+    </section>
+
+    <!-- Add Log Section -->
+    <section id="add-log-section">
+      <h2>Add New Memory Log</h2>
+      <form id="add-log-form">
+        <input type="text" id="log-title" placeholder="Title" required>
+        
+        <select id="log-type" required>
+          <option value="" disabled selected>Select Log Type</option>
+          <option value="Achievement">Achievement</option>
+          <option value="Regret">Regret</option>
+          <option value="Goal">Goal</option>
+          <option value="Thought">Thought</option>
+        </select>
+        
+        <textarea id="log-content" placeholder="Enter memory content..." rows="4" required></textarea>
+        
+        <button type="submit">Add Log</button>
+        <p id="log-status-message"></p>
+      </form>
+    </section>
+
+    <!-- View Logs Section -->
+    <section id="view-logs-section">
+      <h2>View and Search Logs</h2>
+      
+      <div id="search-controls">
+        <input type="text" id="search-type" placeholder="Search by Type (e.g., Goal)">
+        <button id="search-button">Search Logs</button>
+        <button id="view-all-button">View All Logs</button>
+      </div>
+
+      <table id="logs-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Content Preview</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody id="logs-table-body">
+          <!-- Logs will be dynamically inserted here -->
+        </tbody>
+      </table>
+      
+      <p id="log-count-message"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Time Capsule System</p>
+  </footer>
+
+</body>
+</html>
